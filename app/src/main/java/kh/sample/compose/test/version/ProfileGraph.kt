@@ -134,14 +134,6 @@ fun NavGraphBuilder.profileGraph(navController: NavController) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null,
-                        ) {
-                            navController.navigate(
-                                route = EditName(name = myName)
-                            )
-                        }
                         .padding(bottom = 12.dp),
                     verticalAlignment = Alignment.CenterVertically,
 
@@ -154,12 +146,30 @@ fun NavGraphBuilder.profileGraph(navController: NavController) {
                     )
                     Spacer(modifier = Modifier.size(16.dp))
                     Text(text = "Name", style = KhTypography.labelMedium)
-                    Text(
-                        text = myName,
-                        style = KhTypography.bodyMedium,
-                        textAlign = TextAlign.End,
-                        modifier = Modifier.weight(1f)
-                    )
+                    Row(horizontalArrangement = Arrangement.Center) {
+                        Text(
+                            text = myName,
+                            style = KhTypography.bodyMedium,
+                            textAlign = TextAlign.End,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Spacer(modifier = Modifier.size(8.dp))
+                        Icon(
+                            modifier = Modifier
+                                .size(16.dp)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                ) {
+                                    navController.navigate(
+                                        route = EditName(name = myName)
+                                    )
+                                },
+                            painter = painterResource(id = R.drawable.baseline_edit_24),
+                            contentDescription = "",
+                            tint = Color.Gray
+                        )
+                    }
 
                 }
                 Divider()
@@ -175,17 +185,6 @@ fun NavGraphBuilder.profileGraph(navController: NavController) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null,
-                        ) {
-                            navController.navigate(
-                                route = EditStatus(
-                                    status = myStatus.name,
-                                    iconStatus = myStatus.iconStatus
-                                )
-                            )
-                        }
                         .padding(bottom = 12.dp),
                     verticalAlignment = Alignment.CenterVertically,
 
@@ -198,12 +197,33 @@ fun NavGraphBuilder.profileGraph(navController: NavController) {
                     )
                     Spacer(modifier = Modifier.size(16.dp))
                     Text(text = "Status", style = KhTypography.labelMedium)
-                    Text(
-                        text = myStatus.name,
-                        style = KhTypography.bodyMedium,
-                        textAlign = TextAlign.End,
-                        modifier = Modifier.weight(1f)
-                    )
+                    Row(horizontalArrangement = Arrangement.Center) {
+                        Text(
+                            text = myStatus.name,
+                            style = KhTypography.bodyMedium,
+                            textAlign = TextAlign.End,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Spacer(modifier = Modifier.size(8.dp))
+                        Icon(
+                            modifier = Modifier
+                                .size(16.dp)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                ) {
+                                    navController.navigate(
+                                        route = EditStatus(
+                                            status = myStatus.name,
+                                            iconStatus = myStatus.iconStatus
+                                        )
+                                    )
+                                },
+                            painter = painterResource(id = R.drawable.baseline_edit_24),
+                            contentDescription = "",
+                            tint = Color.Gray
+                        )
+                    }
 
                 }
                 Divider()
